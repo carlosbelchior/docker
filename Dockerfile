@@ -19,4 +19,4 @@ RUN curl -sS https://getcomposer.org/installer | php
 
 RUN mv composer.phar /usr/local/bin/composer
 
-COPY .env.example .env
+RUN chmod -R 755 /var/www/html

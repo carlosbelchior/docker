@@ -19,4 +19,13 @@ RUN curl -sS https://getcomposer.org/installer | php
 
 RUN mv composer.phar /usr/local/bin/composer
 
-RUN chmod -R 755 /var/www/html
+USER root
+
+# Configure non-root user.
+ARG PUID=1000
+ARG PGID=1000
+
+RUN groupmod -o -g ${PGID} html-data && \
+    usermod -o -u ${PUID} -g html-data html-data
+
+WORKDIR /var/www/html

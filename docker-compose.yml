@@ -48,3 +48,4 @@ services:
 
 networks:
   project:
+    driver: bridge
